@@ -1,0 +1,353 @@
+/* CSS Reset Dasar */
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    overflow: auto;
+}
+
+body {
+    display: block;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+#sidebar.collapsed {
+    width: 80px;
+}
+
+#sidebar.collapsed .sidebar-brand span,
+#sidebar.collapsed .user-profile .name,
+#sidebar.collapsed .user-profile .role,
+#sidebar.collapsed .user-actions,
+#sidebar.collapsed .sidebar-menu ul li a span {
+    display: none;
+}
+
+#sidebar.collapsed .sidebar-brand {
+    justify-content: center;
+}
+
+#sidebar.collapsed .sidebar-brand img {
+    margin-right: 0;
+    max-width: 60px;
+    height: auto;
+}
+
+#sidebar.collapsed .sidebar-menu ul li a {
+    justify-content: center;
+    padding: 10px;
+}
+
+#sidebar.collapsed .sidebar-menu ul li a i {
+    margin-right: 0;
+}
+
+/* Sidebar Konten */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.sidebar-brand img {
+    max-width: 100%;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.sidebar-brand .app-name {
+    display: none;
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #2b6cb0;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.user-profile .name {
+    font-weight: bold;
+    color: #333;
+}
+
+.user-profile .role {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.user-actions {
+    margin-top: 15px;
+}
+
+.user-actions button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.user-actions button:hover {
+    color: #2b6cb0;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    flex-grow: 1;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-menu ul li a.active,
+.sidebar-menu ul li a:hover {
+    background-color: #e6f0ff;
+    color: #2b6cb0;
+}
+
+.sidebar-menu ul li a i {
+    margin-right: 10px;
+    min-width: 20px;
+}
+
+/* Content */
+#content {
+    margin-left: 250px; /* default saat sidebar tampil penuh */
+    transition: margin-left 0.3s ease-in-out;
+    width: calc(100% - 250px); /* tambahkan ini */
+}
+#content.shifted {
+    margin-left: 80px; /* saat sidebar collapse */
+    width: calc(100% - 80px); /* tambahkan ini juga */
+}
+
+main {
+    flex-grow: 1;
+}
+
+/* Header */
+#header {
+    background-color: #2b6cb0;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* agar isi bisa turun jika terlalu panjang */
+    gap: 10px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#header .btn-link {
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+#header .btn-link:hover {
+    color: #e6f0ff;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    color: #777;
+    border-top: 1px solid #eee;
+    margin-top: auto;
+}
+
+/* Card Style */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: bold;
+}
+
+/* Alerts */
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2b6cb0;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2b6cb0;
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+/* Layout Root: pastikan fleksibel penuh */
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+/* Fix untuk container utama layout */
+.wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Pastikan konten fleksibel */
+#content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Konten dalam #content */
+main {
+    flex-grow: 1;
+}
+
+/* Media Query untuk layar kecil (misalnya tablet/mobil) */
+@media (max-width: 768px) {
+    #sidebar {
+        position: absolute;
+        z-index: 1100;
+        transform: translateX(-100%);
+        width: 250px;
+    }
+
+    #sidebar.show {
+        transform: translateX(0);
+    }
+
+    #content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    #content.shifted {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    
+}
